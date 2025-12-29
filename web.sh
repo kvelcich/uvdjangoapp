@@ -4,6 +4,12 @@ set -e
 # Use environment variable or default to 2 workers
 WORKERS=${GUNICORN_WORKERS:-2}
 
+echo "Running database migrations..."
+uv run python manage.py migrate --noinput
+
+echo "Collecting static files..."
+uv run python manage.py collectstatic --noinput --clear
+
 echo "Starting gunicorn with $WORKERS workers..."
 
 # exec replaces the shell process with gunicorn
