@@ -1,5 +1,9 @@
 #!/bin/bash
 set -e
 echo "Running release.sh"
-uv run manage.py migrate
-uv run manage.py collectstatic
+
+echo "Running database migrations..."
+uv run python manage.py migrate --noinput
+
+echo "Collecting static files..."
+uv run python manage.py collectstatic --noinput --clear
