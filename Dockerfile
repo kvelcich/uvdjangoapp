@@ -24,5 +24,5 @@ EXPOSE 8000
 ENV GUNICORN_WORKERS=2
 
 # Use exec form (JSON array) for proper signal handling
-RUN chmod +x /app/run.sh
-CMD ["/app/run.sh"]
+RUN chmod +x /app/web.sh
+CMD ["/app/web.sh"]
