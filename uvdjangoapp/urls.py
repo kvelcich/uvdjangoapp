@@ -17,7 +17,14 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path
+from django.http import HttpResponse
+
+
+def home(request):
+    return HttpResponse("<h1>Welcome to uvdjangoapp!</h1><p>Your Django app is running successfully.</p>")
+
 
 urlpatterns = [
+    path("", home, name="home"),
     path("admin/", admin.site.urls),
 ]
